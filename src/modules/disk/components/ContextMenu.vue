@@ -1,6 +1,5 @@
 <script setup lang="ts">
 
-
 const props = defineProps<{
   x: number
   y: number

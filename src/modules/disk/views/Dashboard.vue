@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import { useAuthStore } from "../../auth/store/authStore";
+import { useAuth } from "../../auth/composables/useAuth";
 import { useClipboardStore } from "../store/clipboardStore";
 import ContextMenu from "../components/ContextMenu.vue";
 
-import { useDrive } from "../composables/useDrive";
-import { useDriveStorageMeter } from "../composables/useDriveStorageMeter";
+import { useDirectoryActions } from "../composables/useDirectoryActions";
+import { useDirectory } from "../composables/useDirectory";
 
-const auth = useAuthStore();
+const auth = useAuth();
 const clipboard = useClipboardStore();
 
 const currentFolderId = ref<number | null>(null);
@@ -21,7 +21,8 @@ const ctxMenu = ref({
   item: null as any,
 });
 
-const { data, isLoading, storageUsed, storageLimit, storagePercentage } = useDriveStorageMeter(currentFolderId);
+const { data, isLoading, storageUsed, storageLimit, storagePercentage } =
+  useDirectory(currentFolderId);
 
 const {
   pasteMutation,
@@ -31,8 +32,8 @@ const {
   enterFolder,
   promptNewFolder,
   onFileSelected,
-  formatSize
-} = useDrive(currentFolderId, ctxMenu);
+  formatSize,
+} = useDirectoryActions(currentFolderId, ctxMenu);
 
 const openContext = (e: MouseEvent, item: any, isFolder: boolean) => {
   ctxMenu.value = {
