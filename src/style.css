@@ -1,33 +1,34 @@
 @import "tailwindcss";
 
+/* Datatype */
 @font-face {
-  font-family: 'Datatype';
-  src: url('/fonts/datatype.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'Datatype';
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+    src: url("../fonts/datatype.ttf") format("truetype");
 }
 
-:root {
-  --primary: #3b82f6;
-  --bg-color: #f3f4f6;
-  --text-color: #1f2937;
+@theme {
+    --font-sans: "Datatype", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --color-main-bg: #ffffff;
+    --color-main-surface: #f9fafb;
+    --color-main-border: #e2e8f0;
+    --color-aside: #e2e8f0;
+    --color-aside-border: #ccd3db;
+    --color-header-bg: #bfcfe350;
+
+    --color-main-text: #7f7f93;
 }
 
+/* Detección automática del sistema */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-color: #111827;
-    --text-color: #f9fafb;
+    --color-main-bg: #09090b;
+    --color-main-surface: #121214;
+    --color-main-border: #27272a;
+    --color-aside: #1f1f2c;
+    --color-aside-border: #2c2c34;
+    --color-header-bg:#26263a50;
   }
-}
-
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: 'Inter', system-ui, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-.font-datatype {
-  font-family: 'Datatype', sans-serif;
 }

@@ -4,6 +4,11 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
+      path: "/",
+      name: "welcome",
+      component: () => import("@/modules/welcome/views/Welcome.vue"),
+    },
+    {
       path: "/login",
       name: "login",
       component: () => import("@/modules/auth/views/Login.vue"),
@@ -21,7 +26,7 @@ const router = createRouter({
 router.beforeEach((to, _from, next) => {
   const token = localStorage.getItem("auth_token");
   if (to.meta.requiresAuth && !token) {
-    next({ name: "login" });
+    next({ name: "welcome" });
   } else if (to.name === "login" && token) {
     next({ name: "dashboard" });
   } else {
