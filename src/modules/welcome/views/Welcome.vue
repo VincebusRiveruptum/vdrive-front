@@ -2,6 +2,7 @@
 
 import GuestLayout from '@/shared/layouts/GuestLayout.vue';
 import logo from "@/assets/img/floppy.png"
+import { isAuth } from '@/modules/auth/composables/useAuth';
 
 </script>
 
@@ -11,9 +12,9 @@ import logo from "@/assets/img/floppy.png"
             <div class="flex flex-col gap-4 sm:flex-row justify-evenly items-center w-full">
                 <img :src=logo class="w-80">
                 <nav class="flex flex-row gap-4 items-center justify-center">
-                    <RouterLink>Dashboard</RouterLink>
-                    <RouterLink>Sign Up</RouterLink>
-                    <RouterLink>Register</RouterLink>
+                    <RouterLink :v-if="!isAuth">Dashboard</RouterLink>
+                    <RouterLink :to="{ name: 'login'}">Log in</RouterLink>
+                    <RouterLink :to="{ name: 'register'}">Register</RouterLink>
                 </nav>
             </div>
         </div>

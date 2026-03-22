@@ -1,6 +1,10 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
+export const isAuth = () => {
+  return (localStorage.getItem("auth_token")) ? true : false
+}
+
 export const useAuth = () => {
   const token = ref<string | null>(localStorage.getItem('auth_token'))
   const user = ref<any>(null)
@@ -22,5 +26,6 @@ export const useAuth = () => {
     router.push({ name: 'login' })
   }
 
-  return { token, user, setToken, setUser, logout }
+
+  return { token, user, setToken, setUser, logout}
 }

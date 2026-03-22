@@ -7,6 +7,8 @@ import ContextMenu from "../components/ContextMenu.vue";
 import { useDirectoryActions } from "../composables/useDirectoryActions";
 import { useDirectory } from "../composables/useDirectory";
 
+import floppy from "@/assets/img/floppy.png"
+
 const auth = useAuth();
 const clipboard = useClipboardStore();
 
@@ -69,7 +71,7 @@ const triggerFileUpload = () => {
       >
         <div class="flex items-center gap-4 w-full sm:w-1/2">
           <img
-            src="/img/floppy.png"
+            :src="floppy"
             alt="VDRIVE Floppy"
             class="w-10 h-10 object-contain"
           />

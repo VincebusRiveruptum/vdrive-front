@@ -1,13 +1,18 @@
 <script setup lang="ts">
 import { useLogin } from "@/modules/auth/composables/useLogin";
-import AuthLayout from "../components/AuthLayout.vue";
 
 const { isPending, form, onLogin } = useLogin();
 </script>
 
 <template>
-  <AuthLayout>
-      <form @submit.prevent="onLogin" class="flex flex-col gap-4">
+  <div
+    class="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 transition-colors duration-300 relative overflow-hidden"
+  >
+
+    <div
+      class="z-10 bg-white dark:bg-gray-800 p-10 rounded-xl shadow-2xl w-full max-w-sm border border-gray-100 dark:border-gray-750"
+    >
+      <form @submit.prevent="onLogin" class="space-y-6">
         <div>
           <label
             class="block text-sm font-semibold text-gray-600 dark:text-gray-400 mb-1"
@@ -45,7 +50,7 @@ const { isPending, form, onLogin } = useLogin();
         <button
           type="submit"
           :disabled="!!isPending"
-          class="btn-sm mt-4 "
+          class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-md text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
         >
           <svg
             v-if="isPending"
@@ -71,5 +76,6 @@ const { isPending, form, onLogin } = useLogin();
           {{ isPending ? "Autenticando..." : "Entrar" }}
         </button>
       </form>
-  </AuthLayout>
+    </div>
+  </div>
 </template>
